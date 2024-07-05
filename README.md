@@ -1,5 +1,5 @@
 <div id="header" align="center">
-  <img src="./images/potatoman-circle.png" width="100"/>
+  <img src="./images/sample_dog4-circle.jpeg-" width="100"/>
   <h1>common-member</h1>
 </div>
 
