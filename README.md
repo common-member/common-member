@@ -12,7 +12,7 @@
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,tailwind,bootstrap)](https://skillicons.dev)
 
 ### others
-[![My Skills](https://skillicons.dev/icons?i=figma,git,github)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=figma,git,github,raycast)](https://skillicons.dev)
 
 ## Status
 
