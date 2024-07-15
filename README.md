@@ -30,8 +30,8 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/potatoman-dev/potatoman-dev/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/potatoman-dev/potatoman-dev/output/github-contribution-grid-snake.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/common-member/common-memberv/output/github-contribution-grid-snake.svg">
 </picture>
 
 <!--![common-member's GitHub stats](https://github-readme-stats.vercel.app/api?username=common-member&show_icons=true&theme=github_dark_dimmed=)
