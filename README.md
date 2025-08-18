@@ -3,16 +3,27 @@
   <h1>common-member</h1>
 </div>
 
-## My Skills
+## Tech Stack
 
-### backend
-[![My Skills](https://skillicons.dev/icons?i=ruby,rails,docker,)](https://skillicons.dev)
+### Backend & Infrastructure
+[![My Skills](https://skillicons.dev/icons?i=ruby,rails,mysql,gcp,docker)](https://skillicons.dev)
 
-### frontend
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,tailwind,bootstrap)](https://skillicons.dev)
+### Frontend & UI
+[![My Skills](https://skillicons.dev/icons?i=ts,angular,html,css,js,tailwind,bootstrap,sass)](https://skillicons.dev)
 
-### others
-[![My Skills](https://skillicons.dev/icons?i=figma,git,github)](https://skillicons.dev)
+### DevOps & CI/CD
+[![My Skills](https://skillicons.dev/icons?i=githubactions,docker,bash)](https://skillicons.dev)
+
+### Development Tools
+[![My Skills](https://skillicons.dev/icons?i=git,github,figma)](https://skillicons.dev)
+
+### Monitoring & Analytics
+[![My Skills](https://skillicons.dev/icons?i=sentry)](https://skillicons.dev)
+
+### Additional Technologies
+- **API Design**: OpenAPI/Swagger
+- **Error Tracking**: Sentry
+- **Collaboration**: Slack, Notion
 
 ## Status
 
