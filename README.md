@@ -1,64 +1,64 @@
 <div id="header" align="center">
-  <img src="./images/sample_dog4-circle.png" width="200"　alt="サモエド"/>
-  <h1>common-member</h1>
+  <img src="./images/sample_dog4-circle.png" width="180" alt="Samoyed avatar" />
+  <h1>Hi, I'm common-member 👋</h1>
+  <p><strong>🐻‍❄️ Samoyed-powered web engineer</strong></p>
+  <p>Designing, building, shipping, and observing web applications—one practical improvement at a time.</p>
 </div>
 
-## Tech Stack
+## 🐾 My Daily Engineering Loop
 
-### Backend & Infrastructure
-[![My Skills](https://skillicons.dev/icons?i=ruby,rails,mysql,gcp,docker)](https://skillicons.dev)
+<p align="center">
+  🗺️ Design&nbsp;&nbsp;→&nbsp;&nbsp;⚙️ Build&nbsp;&nbsp;→&nbsp;&nbsp;🎨 Craft&nbsp;&nbsp;→&nbsp;&nbsp;🚢 Ship&nbsp;&nbsp;→&nbsp;&nbsp;🔭 Observe
+</p>
 
-### Frontend & UI
-[![My Skills](https://skillicons.dev/icons?i=ts,angular,html,css,js,tailwind,bootstrap,sass)](https://skillicons.dev)
+### 🗺️ Design the map
 
-### DevOps & CI/CD
-[![My Skills](https://skillicons.dev/icons?i=githubactions,docker,bash)](https://skillicons.dev)
+**OpenAPI / Swagger · Figma**
 
-### Development Tools
-[![My Skills](https://skillicons.dev/icons?i=git,github,figma)](https://skillicons.dev)
+I shape API contracts and UI ideas before turning them into code.
 
-### Monitoring & Analytics
-[![My Skills](https://skillicons.dev/icons?i=sentry)](https://skillicons.dev)
+### ⚙️ Build the engine
 
-### Additional Technologies
-- **API Design**: OpenAPI/Swagger
-- **Error Tracking**: Sentry
-- **Collaboration**: Slack, Notion
+[![Backend Skills](https://skillicons.dev/icons?i=ruby,rails,mysql)](https://skillicons.dev)
 
-## Status
+I use **Ruby on Rails** and **MySQL** to build application logic, APIs, and data flows.
 
-<a href="https://git.io/streak-stats">
-  <img align="left" src="https://streak-stats.demolab.com?user=common-member&theme=github-dark-dimmed&border_radius=10&date_format=%5BY.%5Dn.j" />
-</a><br>
-<a href="https://github.com/anuraghazra/github-readme-stats">
-  <img align="left" src="https://github-readme-stats.vercel.app/api/top-langs/?username=common-member&layout=compact&theme=github_dark_dimmed" />
-</a>
+### 🎨 Craft the interface
 
+[![Frontend Skills](https://skillicons.dev/icons?i=ts,angular,html,css,tailwind,bootstrap,sass)](https://skillicons.dev)
 
-<!-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=common-member&layout=compact)
+I build maintainable user interfaces with **TypeScript**, **Angular**, and the web platform.
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=common-member&theme=dark&border_radius=10&date_format=%5BY.%5Dn.j)](https://git.io/streak-stats) -->
+### 🚢 Ship with confidence
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/common-member/common-memberv/output/github-contribution-grid-snake.svg">
-</picture>
+[![Delivery Skills](https://skillicons.dev/icons?i=docker,githubactions,gcp,bash)](https://skillicons.dev)
 
-<!--![common-member's GitHub stats](https://github-readme-stats.vercel.app/api?username=common-member&show_icons=true&theme=github_dark_dimmed=)
--->
+I use **Docker**, **GitHub Actions**, and **GCP** for repeatable delivery and day-to-day operations.
 
-<!--
-**common-member/common-member** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### 🔭 Keep watch
 
-Here are some ideas to get you started:
+[![Monitoring Skills](https://skillicons.dev/icons?i=sentry)](https://skillicons.dev)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+I use **Sentry** to find problems, understand their impact, and keep applications healthy.
+
+### 🤝 Keep the party in sync
+
+[![Collaboration Tools](https://skillicons.dev/icons?i=git,github,figma)](https://skillicons.dev)
+
+**GitHub · Slack · Notion** help keep code reviews, documentation, and teamwork moving.
+
+## 🌙 After Hours
+
+My personal projects are currently taking a nap.
+
+This profile focuses on the tools and practices I use in my day-to-day work.
+
+## 🐍 Contribution Trail
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg" />
+    <img alt="GitHub contribution grid snake animation" src="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg" />
+  </picture>
+</div>
