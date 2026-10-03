@@ -1,7 +1,8 @@
 name: generate animation
 on:
   schedule:
-    - cron: "0 */24 * * *"
+    - cron: "0 0 * * *"
+      timezone: "Asia/Tokyo"
 
   workflow_dispatch:
   push:
