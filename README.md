@@ -1,64 +1,64 @@
 <div id="header" align="center">
-  <img src="./images/sample_dog4-circle.png" width="180" alt="Samoyed avatar" />
-  <h1>Hi, I'm common-member 👋</h1>
-  <p><strong>🐻‍❄️ Samoyed-powered web engineer</strong></p>
-  <p>Designing, building, shipping, and observing web applications—one practical improvement at a time.</p>
+  <img src="./images/sample_dog4-circle.png" width="180" alt="サモエドのアイコン" />
+  <h1>こんにちは、common-memberです 👋</h1>
+  <p><strong>🐻‍❄️ サモエド推しのWebエンジニア</strong></p>
+  <p>Webアプリケーションの設計・開発・リリース・運用改善に、日々取り組んでいます。</p>
 </div>
 
-## 🐾 My Daily Engineering Loop
+## 🐾 日々の開発サイクル
 
 <p align="center">
-  🗺️ Design&nbsp;&nbsp;→&nbsp;&nbsp;⚙️ Build&nbsp;&nbsp;→&nbsp;&nbsp;🎨 Craft&nbsp;&nbsp;→&nbsp;&nbsp;🚢 Ship&nbsp;&nbsp;→&nbsp;&nbsp;🔭 Observe
+  🗺️ 設計&nbsp;&nbsp;→&nbsp;&nbsp;⚙️ 実装&nbsp;&nbsp;→&nbsp;&nbsp;🎨 UI&nbsp;&nbsp;→&nbsp;&nbsp;🚢 リリース&nbsp;&nbsp;→&nbsp;&nbsp;🔭 監視・改善
 </p>
 
-### 🗺️ Design the map
+### 🗺️ 設計図を描く
 
 **OpenAPI / Swagger · Figma**
 
-I shape API contracts and UI ideas before turning them into code.
+実装に入る前に、APIの仕様とUIのイメージを整理します。
 
-### ⚙️ Build the engine
+### ⚙️ バックエンドを組み立てる
 
-[![Backend Skills](https://skillicons.dev/icons?i=ruby,rails,mysql)](https://skillicons.dev)
+[![バックエンド技術](https://skillicons.dev/icons?i=ruby,rails,mysql)](https://skillicons.dev)
 
-I use **Ruby on Rails** and **MySQL** to build application logic, APIs, and data flows.
+**Ruby on Rails**と**MySQL**を使い、業務ロジック・API・データ処理を実装しています。
 
-### 🎨 Craft the interface
+### 🎨 UIを形にする
 
-[![Frontend Skills](https://skillicons.dev/icons?i=ts,angular,html,css,tailwind,bootstrap,sass)](https://skillicons.dev)
+[![フロントエンド技術](https://skillicons.dev/icons?i=ts,angular,html,css,tailwind,bootstrap,sass)](https://skillicons.dev)
 
-I build maintainable user interfaces with **TypeScript**, **Angular**, and the web platform.
+**TypeScript**と**Angular**を中心に、保守しやすいユーザーインターフェースを構築しています。
 
-### 🚢 Ship with confidence
+### 🚢 安心して届ける
 
-[![Delivery Skills](https://skillicons.dev/icons?i=docker,githubactions,gcp,bash)](https://skillicons.dev)
+[![デリバリーと運用の技術](https://skillicons.dev/icons?i=docker,githubactions,gcp,bash)](https://skillicons.dev)
 
-I use **Docker**, **GitHub Actions**, and **GCP** for repeatable delivery and day-to-day operations.
+**Docker**、**GitHub Actions**、**GCP**を使い、再現性のある環境づくりとデリバリーの自動化、日々の運用に取り組んでいます。
 
-### 🔭 Keep watch
+### 🔭 安定稼働を見守る
 
-[![Monitoring Skills](https://skillicons.dev/icons?i=sentry)](https://skillicons.dev)
+[![監視ツール](https://skillicons.dev/icons?i=sentry)](https://skillicons.dev)
 
-I use **Sentry** to find problems, understand their impact, and keep applications healthy.
+**Sentry**でエラーを検知し、影響を把握して、アプリケーションの安定稼働につなげています。
 
-### 🤝 Keep the party in sync
+### 🤝 チームで前に進む
 
-[![Collaboration Tools](https://skillicons.dev/icons?i=git,github,figma)](https://skillicons.dev)
+[![コラボレーションツール](https://skillicons.dev/icons?i=git,github,figma)](https://skillicons.dev)
 
-**GitHub · Slack · Notion** help keep code reviews, documentation, and teamwork moving.
+**GitHub · Slack · Notion**を使い、コードレビュー・ドキュメント・チーム内の情報共有を進めています。
 
-## 🌙 After Hours
+## 🌙 業務時間外
 
-My personal projects are currently taking a nap.
+個人開発は、ただいまひと休み中です。
 
-This profile focuses on the tools and practices I use in my day-to-day work.
+このプロフィールでは、日々の業務で使っている技術と仕事の進め方を紹介しています。
 
-## 🐍 Contribution Trail
+## 🐍 コントリビューションの足あと
 
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg" />
-    <img alt="GitHub contribution grid snake animation" src="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg" />
+    <img alt="GitHubのコントリビューションを進むSnakeアニメーション" src="https://raw.githubusercontent.com/common-member/common-member/output/github-contribution-grid-snake.svg" />
   </picture>
 </div>
