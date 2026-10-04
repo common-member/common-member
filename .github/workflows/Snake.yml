@@ -32,3 +32,42 @@ jobs:
           commit_message: "chore: update contribution snake"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify:
+    needs: generate
+    if: ${{ github.event_name == 'push' && needs.generate.result == 'success' }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: notify successful workflow
+        continue-on-error: true
+        env:
+          NTFY_URL: ${{ secrets.NTFY_URL }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$NTFY_URL" ]; then
+            echo "::notice::NTFY_URLが設定されていないため、通知をスキップします。"
+            exit 0
+          fi
+
+          auth_header=()
+          if [ -n "$NTFY_TOKEN" ]; then
+            auth_header+=(--header "Authorization: Bearer $NTFY_TOKEN")
+          fi
+
+          message=$(printf 'リポジトリ: %s\nコミット: %.7s\n結果: 成功' "$REPOSITORY" "$COMMIT_SHA")
+
+          curl --fail --silent --show-error \
+            --retry 2 \
+            --max-time 10 \
+            "${auth_header[@]}" \
+            --header "Title: Snake CIが成功しました" \
+            --header "Tags: white_check_mark" \
+            --header "Click: $RUN_URL" \
+            --data-binary "$message" \
+            "$NTFY_URL"
