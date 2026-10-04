@@ -1,49 +1,70 @@
+# GitHubのコントリビューション履歴からSnake画像を生成・更新する
 name: generate animation
+
+# 定期実行・手動実行・mainへのpushを起点にする
 on:
   schedule:
     # 日本時間の0時・4時・8時・12時・16時・20時に実行
     - cron: "0 */4 * * *"
       timezone: "Asia/Tokyo"
 
+  # GitHubのActions画面から手動でも実行できる
   workflow_dispatch:
+
+  # mainへ変更が反映されたときに実行する
   push:
     branches:
       - main
 
 jobs:
+  # Snake画像を生成し、公開用のoutputブランチへ反映する
   generate:
+    # outputブランチへコミットするため、リポジトリへの書き込みを許可する
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    # 予期しない停止による長時間実行を防ぐ
     timeout-minutes: 5
     steps:
+      # リポジトリ所有者のコントリビューション履歴からSVGを生成する
       - name: generate contribution snake
         uses: Platane/snk/svg-only@v3
         with:
+          # リポジトリの所有者名を自動的に使用する
           github_user_name: ${{ github.repository_owner }}
+          # GitHubのライト・ダークテーマに対応した2種類を出力する
           outputs: |
             dist/github-contribution-grid-snake.svg?palette=github-light
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      # 生成したdistディレクトリをoutputブランチへ反映する
       - name: push contribution snake to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
+          # 画像に変更がない場合は空コミットを作成しない
           allow_empty_commit: false
           commit_message: "chore: update contribution snake"
         env:
+          # GitHubがワークフローごとに発行するトークンを使用する
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  # Snake画像の生成・反映が成功したことをntfyへ通知する
   notify:
+    # generateジョブが完了してから実行する
     needs: generate
     # mainへのpushでSnake生成が成功した場合だけ通知する
     # 定期実行と手動実行では通知しない
     if: ${{ github.event_name == 'push' && needs.generate.result == 'success' }}
+    # 通知ではリポジトリを書き換えないため、読み取り権限だけを与える
     permissions:
       contents: read
     runs-on: ubuntu-latest
+    # 通知処理が長時間停止しないよう制限する
     timeout-minutes: 1
     steps:
+      # GitHub Actions Secretsの接続情報を使ってntfyへ送信する
       - name: notify successful workflow
         # 通知サービスの障害でSnake生成を失敗扱いにしない
         continue-on-error: true
@@ -56,18 +77,22 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          # 通知先が未設定ならエラーにせず終了する
           if [ -z "$NTFY_URL" ]; then
             echo "::notice::NTFY_URLが設定されていないため、通知をスキップします。"
             exit 0
           fi
 
+          # トークンが設定されている場合だけ認証ヘッダーを追加する
           auth_header=()
           if [ -n "$NTFY_TOKEN" ]; then
             auth_header+=(--header "Authorization: Bearer $NTFY_TOKEN")
           fi
 
+          # 通知本文にはリポジトリ名・短縮コミットID・実行結果を含める
           message=$(printf 'リポジトリ: %s\nコミット: %.7s\n結果: 成功' "$REPOSITORY" "$COMMIT_SHA")
 
+          # 一時的な通信失敗は2回まで再試行し、通知からActions画面を開けるようにする
           curl --fail --silent --show-error \
             --retry 2 \
             --max-time 10 \
