@@ -1,6 +1,7 @@
 name: generate animation
 on:
   schedule:
+    # 日本時間の0時・4時・8時・12時・16時・20時に実行
     - cron: "0 */4 * * *"
       timezone: "Asia/Tokyo"
 
@@ -35,6 +36,8 @@ jobs:
 
   notify:
     needs: generate
+    # mainへのpushでSnake生成が成功した場合だけ通知する
+    # 定期実行と手動実行では通知しない
     if: ${{ github.event_name == 'push' && needs.generate.result == 'success' }}
     permissions:
       contents: read
@@ -42,9 +45,12 @@ jobs:
     timeout-minutes: 1
     steps:
       - name: notify successful workflow
+        # 通知サービスの障害でSnake生成を失敗扱いにしない
         continue-on-error: true
         env:
+          # GitHub Actions Secretsで設定する
           NTFY_URL: ${{ secrets.NTFY_URL }}
+          # 認証付きトピックを使用する場合のみ設定
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           REPOSITORY: ${{ github.repository }}
           COMMIT_SHA: ${{ github.sha }}
