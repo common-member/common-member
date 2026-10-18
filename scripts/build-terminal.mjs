@@ -32,12 +32,59 @@ function formatDate(date) {
   return `${parts.year}-${parts.month}-${parts.day} (${parts.weekday})`
 }
 
+// 天気を表示する場所（渋谷区）
+const WEATHER_LOCATION = { name: 'Shibuya', latitude: 35.664, longitude: 139.698 }
+
+// Open-Meteo が返す WMO の天気コードを絵文字にする
+function weatherEmoji(code) {
+  if (code === 0) return '☀️' // 快晴
+  if (code === 1) return '🌤️' // 晴れ
+  if (code === 2) return '⛅' // 一部曇り
+  if (code === 3) return '☁️' // 曇り
+  if (code === 45 || code === 48) return '🌫️' // 霧
+  if (code >= 51 && code <= 67) return '🌧️' // 霧雨・雨
+  if (code >= 71 && code <= 77) return '🌨️' // 雪
+  if (code >= 80 && code <= 82) return '🌦️' // にわか雨
+  if (code === 85 || code === 86) return '🌨️' // にわか雪
+  if (code >= 95) return '⛈️' // 雷雨
+  return '🌡️'
+}
+
+// 今日の天気と最高気温を取得する
+// 取得できなかったときは例外で終了し、壊れた画像を書き出さない
+async function fetchWeather() {
+  const url = new URL('https://api.open-meteo.com/v1/forecast')
+  url.search = new URLSearchParams({
+    latitude: WEATHER_LOCATION.latitude,
+    longitude: WEATHER_LOCATION.longitude,
+    daily: 'temperature_2m_max,weather_code',
+    timezone: 'Asia/Tokyo', // 「今日」を日本時間で決める
+    forecast_days: 1,
+  })
+
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw new Error(`天気を取得できませんでした（HTTP ${response.status}）`)
+  }
+
+  const { daily } = await response.json()
+  const temperature = daily?.temperature_2m_max?.[0]
+  const code = daily?.weather_code?.[0]
+  if (typeof temperature !== 'number' || typeof code !== 'number') {
+    throw new Error(`天気のデータが想定と違う形です: ${JSON.stringify(daily)}`)
+  }
+
+  return `${weatherEmoji(code)} ${Math.round(temperature)}°C`
+}
+
 // 表示する行。command は打ち込むように表示し、output はその後にそのまま表示する
 const lines = [
   { type: 'command', text: 'whoami' },
   { type: 'output', text: 'Web Application Engineer (Ruby on Rails / Angular)' },
   { type: 'command', text: 'date' },
   { type: 'output', text: formatDate(new Date()) },
+  { type: 'command', text: `weather ${WEATHER_LOCATION.name}` },
+  { type: 'output', text: await fetchWeather() },
 ]
 
 // < や & が含まれてもSVGが壊れないように置き換える
