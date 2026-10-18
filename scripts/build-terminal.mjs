@@ -17,8 +17,8 @@ const PADDING = 24
 const FONT_SIZE = 16
 const LINE_HEIGHT = 26
 
-// 実行環境のタイムゾーン（GitHub Actions は UTC）に関係なく、日本時間の日付にする
-function formatDate(date) {
+// 実行環境のタイムゾーン（GitHub Actions は UTC）に関係なく、日本時間の年・月・日・曜日を取り出す
+function tokyoDateParts(date) {
   const formatter = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
@@ -26,9 +26,13 @@ function formatDate(date) {
     day: '2-digit',
     weekday: 'short',
   })
-  const parts = Object.fromEntries(
+  return Object.fromEntries(
     formatter.formatToParts(date).map(({ type, value }) => [type, value])
   )
+}
+
+function formatDate(date) {
+  const parts = tokyoDateParts(date)
   return `${parts.year}-${parts.month}-${parts.day} (${parts.weekday})`
 }
 
@@ -77,14 +81,63 @@ async function fetchWeather() {
   return `${weatherEmoji(code)} ${Math.round(temperature)}°C`
 }
 
+// コントリビューションを数える GitHub のユーザー（Actions ではリポジトリの所有者）
+const GITHUB_USER = process.env.GITHUB_REPOSITORY_OWNER ?? 'common-member'
+
+// 今年（日本時間の1月1日から今まで）のコントリビューション数を取得する
+// 手元で試すときは GITHUB_TOKEN=$(gh auth token) を付けて実行する
+async function fetchContributions(now) {
+  const token = process.env.GITHUB_TOKEN
+  if (!token) {
+    throw new Error('環境変数 GITHUB_TOKEN が設定されていません')
+  }
+
+  const { year } = tokyoDateParts(now)
+  const query = `query($login: String!, $from: DateTime!, $to: DateTime!) {
+    user(login: $login) {
+      contributionsCollection(from: $from, to: $to) {
+        contributionCalendar { totalContributions }
+      }
+    }
+  }`
+  const variables = {
+    login: GITHUB_USER,
+    from: `${year}-01-01T00:00:00+09:00`,
+    to: now.toISOString(),
+  }
+
+  const response = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { Authorization: `bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, variables }),
+  })
+  if (!response.ok) {
+    throw new Error(`コントリビューション数を取得できませんでした（HTTP ${response.status}）`)
+  }
+
+  const { data, errors } = await response.json()
+  const total = data?.user?.contributionsCollection?.contributionCalendar?.totalContributions
+  if (errors || typeof total !== 'number') {
+    throw new Error(`コントリビューション数を取得できませんでした: ${JSON.stringify(errors ?? data)}`)
+  }
+
+  // 非公開の活動が含まれるかをワークフローのログで確かめられるように出しておく
+  console.log(`${GITHUB_USER} の今年のコントリビューション数: ${total}`)
+  return `${total.toLocaleString('en-US')} contributions`
+}
+
+const now = new Date()
+
 // 表示する行。command は打ち込むように表示し、output はその後にそのまま表示する
 const lines = [
   { type: 'command', text: 'whoami' },
   { type: 'output', text: 'Web Application Engineer (Ruby on Rails / Angular)' },
   { type: 'command', text: 'date' },
-  { type: 'output', text: formatDate(new Date()) },
+  { type: 'output', text: formatDate(now) },
   { type: 'command', text: `weather ${WEATHER_LOCATION.name}` },
   { type: 'output', text: await fetchWeather() },
+  { type: 'command', text: 'gh contributions --this-year' },
+  { type: 'output', text: await fetchContributions(now) },
 ]
 
 // < や & が含まれてもSVGが壊れないように置き換える
