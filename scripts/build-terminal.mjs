@@ -7,6 +7,7 @@ const OUTPUT_FILE = `${OUTPUT_DIR}/terminal.svg`
 // 色は dotfiles の .zshrc のプロンプトに合わせる
 const COLORS = {
   background: '#0d1117',
+  border: '#30363d', // GitHub のダークモードの背景と同じ色なので、枠線で境目を見せる
   prompt: '#5fd700', // xterm 76番（成功時の ❯）
   command: '#ffffff',
   output: '#c9d1d9',
@@ -235,7 +236,7 @@ function renderSvg() {
   <style>
     text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: ${FONT_SIZE}px; white-space: pre; }
   </style>
-  <rect width="${WIDTH}" height="${height}" rx="8" fill="${COLORS.background}" />
+  <rect x="0.5" y="0.5" width="${WIDTH - 1}" height="${height - 1}" rx="8" fill="${COLORS.background}" stroke="${COLORS.border}" />
   ${renderLines().join('\n  ')}
 </svg>
 `
