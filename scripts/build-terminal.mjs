@@ -17,10 +17,27 @@ const PADDING = 24
 const FONT_SIZE = 16
 const LINE_HEIGHT = 26
 
+// 実行環境のタイムゾーン（GitHub Actions は UTC）に関係なく、日本時間の日付にする
+function formatDate(date) {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'short',
+  })
+  const parts = Object.fromEntries(
+    formatter.formatToParts(date).map(({ type, value }) => [type, value])
+  )
+  return `${parts.year}-${parts.month}-${parts.day} (${parts.weekday})`
+}
+
 // 表示する行。command はプロンプト付きで、output はそのまま表示する
 const lines = [
   { type: 'command', text: 'whoami' },
   { type: 'output', text: 'Web Application Engineer (Ruby on Rails / Angular)' },
+  { type: 'command', text: 'date' },
+  { type: 'output', text: formatDate(new Date()) },
 ]
 
 // < や & が含まれてもSVGが壊れないように置き換える
