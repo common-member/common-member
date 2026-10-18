@@ -1,4 +1,4 @@
-# GitHubのコントリビューション履歴からSnake画像を生成・更新する
+# GitHubのコントリビューション履歴からSnake画像を、日付や天気からターミナル風画像を生成・更新する
 name: generate animation
 
 # 定期実行・手動実行・mainへのpushを起点にする
@@ -17,7 +17,8 @@ on:
       - main
 
 jobs:
-  # Snake画像を生成し、公開用のoutputブランチへ反映する
+  # Snake画像とターミナル風画像を生成し、公開用のoutputブランチへ反映する
+  # outputブランチはdistの中身で丸ごと置き換わるため、2つの画像は同じジョブで生成する
   generate:
     # outputブランチへコミットするため、リポジトリへの書き込みを許可する
     permissions:
@@ -26,6 +27,22 @@ jobs:
     # 予期しない停止による長時間実行を防ぐ
     timeout-minutes: 5
     steps:
+      # ターミナル風画像の生成スクリプトを使うため、リポジトリを取り出す
+      - name: checkout
+        uses: actions/checkout@v7
+
+      - name: setup node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      # 日付・天気・コントリビューション数を差し込んだターミナル風のSVGを生成する
+      # 天気などを取得できずに失敗した場合は、以降の手順を止めてoutputブランチの画像をそのまま残す
+      - name: generate terminal
+        run: node scripts/build-terminal.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # リポジトリ所有者のコントリビューション履歴からSVGを生成する
       - name: generate contribution snake
         uses: Platane/snk/svg-only@v3
@@ -38,14 +55,14 @@ jobs:
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       # 生成したdistディレクトリをoutputブランチへ反映する
-      - name: push contribution snake to the output branch
+      - name: push images to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
           # 画像に変更がない場合は空コミットを作成しない
           allow_empty_commit: false
-          commit_message: "chore: update contribution snake"
+          commit_message: "chore: update profile images"
         env:
           # GitHubがワークフローごとに発行するトークンを使用する
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
