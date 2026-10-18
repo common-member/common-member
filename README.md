@@ -1,8 +1,6 @@
 <div align="center">
   <img src="./images/sample_dog4-circle.png" width="160" alt="サモエドのアイコン" />
   <h1>common-member</h1>
-  <p>🐻‍❄️ Web Application Engineer</p>
-  <p>日常的な業務では、Ruby on RailsとAngularを中心に、Webアプリケーションの設計・開発・運用をしています。</p>
   <img src="https://raw.githubusercontent.com/common-member/common-member/output/terminal.svg" alt="ターミナル風の自己紹介。日付、渋谷の天気、今年のコントリビューション数を毎日更新しています" />
 </div>
 
