@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="272" viewBox="0 0 600 272">
+  <title>ターミナル風の自己紹介</title>
+  <style>
+    text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 16px; white-space: pre; }
+  </style>
+  <rect x="0.5" y="0.5" width="599" height="271" rx="8" fill="#0d1117" stroke="#30363d" />
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="0.50s" fill="freeze" />
+    <clipPath id="typing-0">
+      <rect x="43.2" y="24" width="600" height="26">
+        <animate attributeName="width" values="0;9.6;19.2;28.799999999999997;38.4;48;600" calcMode="discrete" begin="0.50s" dur="0.56s" fill="freeze" />
+      </rect>
+    </clipPath>
+    <text x="24" y="40" fill="#5fd700">❯</text>
+    <text x="43.2" y="40" fill="#ffffff" clip-path="url(#typing-0)">whoami</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="1.36s" fill="freeze" />
+    <text x="24" y="66" fill="#c9d1d9">Web Application Engineer (Ruby on Rails / Angular)</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="1.76s" fill="freeze" />
+    <clipPath id="typing-2">
+      <rect x="43.2" y="76" width="600" height="26">
+        <animate attributeName="width" values="0;9.6;19.2;28.799999999999997;600" calcMode="discrete" begin="1.76s" dur="0.4s" fill="freeze" />
+      </rect>
+    </clipPath>
+    <text x="24" y="92" fill="#5fd700">❯</text>
+    <text x="43.2" y="92" fill="#ffffff" clip-path="url(#typing-2)">date</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="2.46s" fill="freeze" />
+    <text x="24" y="118" fill="#c9d1d9">2026-10-24 (Sat)</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="2.86s" fill="freeze" />
+    <clipPath id="typing-4">
+      <rect x="43.2" y="128" width="600" height="26">
+        <animate attributeName="width" values="0;9.6;19.2;28.799999999999997;38.4;48;57.599999999999994;67.2;76.8;86.39999999999999;96;105.6;115.19999999999999;124.8;134.4;600" calcMode="discrete" begin="2.86s" dur="1.28s" fill="freeze" />
+      </rect>
+    </clipPath>
+    <text x="24" y="144" fill="#5fd700">❯</text>
+    <text x="43.2" y="144" fill="#ffffff" clip-path="url(#typing-4)">weather Shibuya</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="4.44s" fill="freeze" />
+    <text x="24" y="170" fill="#c9d1d9">🌧️ 16°C</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="4.84s" fill="freeze" />
+    <clipPath id="typing-6">
+      <rect x="43.2" y="180" width="600" height="26">
+        <animate attributeName="width" values="0;9.6;19.2;28.799999999999997;38.4;48;57.599999999999994;67.2;76.8;86.39999999999999;96;105.6;115.19999999999999;124.8;134.4;144;153.6;163.2;172.79999999999998;182.4;192;201.6;211.2;220.79999999999998;230.39999999999998;240;249.6;259.2;600" calcMode="discrete" begin="4.84s" dur="2.32s" fill="freeze" />
+      </rect>
+    </clipPath>
+    <text x="24" y="196" fill="#5fd700">❯</text>
+    <text x="43.2" y="196" fill="#ffffff" clip-path="url(#typing-6)">gh contributions --this-year</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="7.46s" fill="freeze" />
+    <text x="24" y="222" fill="#c9d1d9">799 contributions</text>
+  </g>
+  <g>
+    <animate attributeName="visibility" values="hidden;visible" keyTimes="0;1" calcMode="discrete" dur="7.86s" fill="freeze" />
+    <text x="24" y="248" fill="#5fd700">❯</text>
+    <rect x="43.2" y="234" width="9.6" height="18" fill="#ffffff">
+      <animate attributeName="opacity" values="1;0" calcMode="discrete" begin="7.86s" dur="1s" repeatCount="indefinite" />
+    </rect>
+  </g>
+</svg>
